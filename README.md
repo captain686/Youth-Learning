@@ -128,4 +128,5 @@ cat cqhttp.log
 > 🙈`http://你的ip:6106/img/`
 > 返回图片
 > ![image-20210625174040753](https://gitee.com/anyewuxin/img/raw/master/img/image-20210625174040753.png)
-
+------
+### 👼 bug请提issue
