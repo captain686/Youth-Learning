@@ -129,4 +129,4 @@ cat cqhttp.log
 > 返回图片
 > ![image-20210625174040753](https://gitee.com/anyewuxin/img/raw/master/img/image-20210625174040753.png)
 ------
-### 👼 bug请提issue
+### 👼 bug请提issues
