@@ -1,0 +1,19 @@
+version: '2'
+services:
+  dxx:
+    build: .
+    ports:
+      - "6106:5000"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - img:/home/dxx/img
+      - log:/home/dxx/DxxLog
+      - dxx/qbot:/home/dxx/qbot
+    tty: true
+    networks:
+      - net
+
+networks: 
+  net: 
+    external: 
+      name: proxy_network

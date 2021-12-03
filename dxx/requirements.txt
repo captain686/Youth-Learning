@@ -1,0 +1,6 @@
+requests==2.26.0
+selenium==3.141.0
+Flask==1.1.2
+Pillow==8.4.0
+rich==10.15.1
+aiocqhttp==1.4.2
