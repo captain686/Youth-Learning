@@ -40,22 +40,21 @@
 >  > > 具体细节`百度谷歌`
 >
 > 2. 关于`config.py`
->
->     > `info` –> 你需要在图片上添加的水印信息
->     >
->     > `openid` –>你抓取到的`openid`
->     >
->     > `proxyPool_url`  –>代理池地址，无需修改
->     >
->     > `Keyword` –>机器人触发关键字
+>  > `info` –> 你需要在图片上添加的水印信息
+>  >
+>  > `openid` –>你抓取到的`openid`
+>  >
+>  > `proxyPool_url`  –>代理池地址，无需修改
+>  >
+>  > `Keyword` –>机器人触发关键字
 >     
 > 3. 配置机器人
 >
->     > 配置`dxx/qbot/config.yml`文件
->     >
->     > `uin`:  # QQ账号
->     >
->     > `password`  # QQ密码
+>  > 配置`dxx/qbot/config.yml`文件
+>  >
+>  > `uin`:  # QQ账号
+>  >
+>  > `password`  # QQ密码
 
 ### 																																																搭建
 
