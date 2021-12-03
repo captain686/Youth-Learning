@@ -122,10 +122,9 @@ cat cqhttp.log
 `http://你的ip:6106/`或`http://你的ip:6106/img/`即可
 
 > `http://你的ip:6106/`
->
 > 返回图片链接
 > ![image-20210625174134523](https://gitee.com/anyewuxin/img/raw/master/img/image-20210625174134523.png)
->  🙈`http://你的ip:6106/img/`
-返回图片
+> 🙈`http://你的ip:6106/img/`
+> 返回图片
 > ![image-20210625174040753](https://gitee.com/anyewuxin/img/raw/master/img/image-20210625174040753.png)
 
