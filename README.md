@@ -105,7 +105,7 @@ bash go-cqhttp
 > `bash go-cqhttp`命令为启动机器人命令，关闭窗口时机器人会退出，可以使用进程守护执行程序，命令如下
 
 ```bash
-nohup bash go-cqhttp > cqhttp.log 2>&1 &
+nohup ./go-cqhttp > /home/dxx/DxxLog/cqhttp.log 2>&1 &
 ```
 
 > 查看`cqhttp.log`文件看机器人需不需要登陆验证
