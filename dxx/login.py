@@ -9,7 +9,6 @@ window.localStorage.setItem("openid",f"config.openid");
 获取localStorage
 window.localStorage.getItem("openid");
 """
-from typing import runtime_checkable
 from pic import Pic
 import time, sys
 from selenium import webdriver
