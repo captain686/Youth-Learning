@@ -44,6 +44,10 @@ class QnDxx(Pic):
     
     # 添加openid，登陆平台
     def logIn(self):
+<<<<<<< HEAD
+=======
+        self.driver.("img/111.png")
+>>>>>>> 3ab3d913d20a069735906c3f16a2d2b8fa03cfcd
         self.driver.get("http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo")
         time.sleep(2)
         console.print("[+] 注入openid ...",style="bold green",end='\r')
@@ -67,6 +71,7 @@ class QnDxx(Pic):
         self.driver.find_element_by_xpath('//*[@id="my"]/div[1]/div[2]/div[1]').click()
         time.sleep(2)
         self.driver.find_element_by_xpath('/html/body').screenshot(path+"one.png")
+        # get_screenshot_as_file()
         self.driver.refresh()
         console.print("[*] Refresh ...",style="bold yellow")
         time.sleep(2)

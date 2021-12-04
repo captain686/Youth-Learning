@@ -1,6 +1,6 @@
 version: '2'
 services:
-  dxx:
+  qndxx:
     build: .
     ports:
       - "6106:5000"
