@@ -6,7 +6,7 @@ WORKDIR /home/dxx
 
 RUN chmod 777 start.sh \
     && mkdir -p /usr/share/fonts/chinese/ \
-    && chmod 777 qbot/o-cqhttp \
+    && chmod 777 qbot/go-cqhttp \
     && mkdir img
 
 COPY dxx/tff/MI_LanTing_Regular.ttf /usr/share/fonts/chinese/
