@@ -29,7 +29,7 @@ async def handle_msg(event):
     if keyword in str(msg):
         getImg()
         imgUrl = "http://127.0.0.1/end.png"
-        img = MessageSegment.image(imgUrl)
+        img = MessageSegment.image(imgUrl,cache=False)
         await bot.send(event, img)
     # imageFile.close()
     
