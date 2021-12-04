@@ -96,7 +96,7 @@ docker exec -it $(docker ps|grep qndxx|awk '{print $1}') /bin/bash
 > 注意：`qbot`文件夹中已经附带`go-CQHttp`二进制文件，如想使用其他版本请在自行下载，并将`go-CQHttp`二进制文件放置在`dxx/qbot`目录下即可
 
 ```bash
-cd qbot
+cd qbot && chmod 777 go-cqhttp
 ```
 ```bash
 bash go-cqhttp
