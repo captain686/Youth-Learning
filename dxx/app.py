@@ -94,6 +94,5 @@ def img():
         
         
 if __name__ == '__main__':
-    print(get_url())
-    # app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0")
     
