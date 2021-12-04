@@ -1,4 +1,4 @@
-version: '2'
+version: '3.5'
 services:
   qndxx:
     build: .
@@ -6,9 +6,9 @@ services:
       - "6106:5000"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - img:/home/dxx/img
-      - log:/home/dxx/DxxLog
-      - dxx/qbot:/home/dxx/qbot
+      - $PWD/img/:/home/dxx/img
+      - $PWD/log/:/home/dxx/DxxLog
+      - $PWD/dxx/qbot:/home/dxx/qbot
     tty: true
     networks:
       - net
