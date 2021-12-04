@@ -44,9 +44,6 @@ class QnDxx(Pic):
     
     # 添加openid，登陆平台
     def logIn(self):
-        self.driver.get("chrome://settings/cookies")
-        time.sleep(2)
-        self.driver.get_screenshot_as_file("img/111.png")
         self.driver.get("http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo")
         time.sleep(2)
         console.print("[+] 注入openid ...",style="bold green",end='\r')
