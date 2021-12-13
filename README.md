@@ -102,7 +102,7 @@ docker exec -it $(docker ps|grep qndxx|awk '{print $1}') /bin/bash
 cd qbot && chmod 777 go-cqhttp
 ```
 ```bash
-bash go-cqhttp
+./go-cqhttp
 ```
 
 > `bash go-cqhttp`命令为启动机器人命令，关闭窗口时机器人会退出，可以使用进程守护执行程序，命令如下
