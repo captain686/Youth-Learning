@@ -43,20 +43,25 @@ class QnDxx(Pic):
     
     # 添加openid，登陆平台
     def logIn(self):
-        self.driver.get("http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo")
-        time.sleep(2)
-        console.print("[+] 注入openid ...",style="bold green",end='\r')
-        self.driver.execute_script(f'localStorage.setItem("openid","{config.openid}");')
-        time.sleep(0.5)
+        try:
+            self.driver.get("http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo")
+            time.sleep(2)
+            console.print("[+] 注入openid ...",style="bold green",end='\r')
+            self.driver.execute_script(f'localStorage.setItem("openid","{config.openid}");')
+            time.sleep(0.5)
 
-        self.driver.get("http://qndxx.youth54.cn/SmartLA/dxx.w?method=enterIndexPage&fxopenid=&fxversion=")
+            self.driver.get("http://qndxx.youth54.cn/SmartLA/dxx.w?method=enterIndexPage&fxopenid=&fxversion=")
 
-        console.print("[-] Refresh ...",style="bold yellow",end='\r')
+            console.print("[-] Refresh ...",style="bold yellow",end='\r')
 
-        now_url = self.driver.current_url
-        if "open.weixin.qq.com" in now_url:
-            console.print("[!] openid注入失败",style="bold red")
-        self.getXxjldetail()
+            now_url = self.driver.current_url
+            if "open.weixin.qq.com" in now_url:
+                console.print("[!] openid注入失败",style="bold red")
+            self.getXxjldetail()
+            return True
+        except:
+            self.quit()
+            return False
         
         
     # 截取积分记录&学习记录页面图片

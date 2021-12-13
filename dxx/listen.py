@@ -6,20 +6,21 @@
 """
 
 from aiocqhttp import CQHttp, MessageSegment, Message
+from rich.repr import T
 from login import QnDxx
 import os
 import config
 
 bot = CQHttp()
-
+      
 def getImg():
     print("获取本地图片中...")
-    try:
-        QnDxx().logIn()
-    except:
-        print("[!] Error ...")
-        os.popen("ps -elf|grep chrome |awk '{print $4}'|xargs kill -9")
-        getImg()
+    chromeStatus = QnDxx().logIn()
+    if chromeStatus:
+        return True
+    print("[!] Error ...")
+    getImg()
+    return False
      
 
 @bot.on_message('private')
@@ -27,10 +28,11 @@ async def handle_msg(event):
     msg = Message(event.message)
     keyword = config.Keyword
     if keyword in str(msg):
-        getImg()
-        imgUrl = "http://127.0.0.1/end.png"
-        img = MessageSegment.image(imgUrl,cache=False)
-        await bot.send(event, img)
+        status = getImg()
+        if status:
+            imgUrl = "http://127.0.0.1/end.png"
+            img = MessageSegment.image(imgUrl,cache=False)
+            await bot.send(event, img)
     # imageFile.close()
     
 
