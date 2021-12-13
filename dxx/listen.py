@@ -6,7 +6,6 @@
 """
 
 from aiocqhttp import CQHttp, MessageSegment, Message
-from rich.repr import T
 from login import QnDxx
 import os
 import config
