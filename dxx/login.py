@@ -63,7 +63,6 @@ class QnDxx(Pic):
             self.quit()
             return False
         
-        
     # 截取积分记录&学习记录页面图片
     def getXxjldetail(self):
         path = super().allPath()+"/img/"
