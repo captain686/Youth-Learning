@@ -6,9 +6,9 @@ services:
       - "6106:5000"
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - $PWD/dxx:/home/dxx
       - $PWD/img/:/home/dxx/img
       - $PWD/log/:/home/dxx/DxxLog
-      - $PWD/dxx/qbot:/home/dxx/qbot
     tty: true
     networks:
       - net
