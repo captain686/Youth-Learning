@@ -10,7 +10,7 @@ import config
 
 class Pic(object):
     def allPath(self):
-        self.imgpath = os.path.dirname(os.path.abspath(__file__))
+        self.imgpath = os.path.dirname(__file__)
         # self.imgpath = os.path.join(self.path,"img")
         return self.imgpath
     
