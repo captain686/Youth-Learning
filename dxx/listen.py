@@ -1,11 +1,8 @@
 """
 机器人信息处理
-    用于处理机器人接受到的信息，并返回信息
-    因为CQHttp好像只支持发送图片的url，所以本地会启动一个80端口的http服务
-        即 imgUrl 参数
 """
 
-from aiocqhttp import CQHttp, MessageSegment, Message
+from aiocqhttp import CQHttp, Message
 from login import QnDxx
 import os
 import config
@@ -26,9 +23,9 @@ async def handle_msg(event):
     keyword = config.Keyword
     if keyword in str(msg):
         getImg()
-        imgUrl = "http://127.0.0.1/end.png"
-        img = MessageSegment.image(imgUrl,cache=False)
-        await bot.send(event, img)
+        basePath = os.path.dirname(__file__)
+        img = os.path.join(basePath,"img","end.png")
+        await bot.send(event, f"[CQ:image,cache=0,file=file:///{img}]")
     # imageFile.close()
     
 
