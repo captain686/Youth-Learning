@@ -24,30 +24,20 @@ def getNewestVersionInfo(proxy):
         "Content-Length": "0", 
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
-    response = requests.get(url,headers=headers, verify=False,timeout=5,proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)})
-    print(f"getNewestVersionInfo Status {response.status_code}")
-    if response.status_code == 200:
-        version = response.json()["version"]
-        return version
-    return ""
+    try:
+        response = requests.get(url,headers=headers, verify=False,timeout=5,proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)})
+        print(f"getNewestVersionInfo Status {response.status_code}")
+        if response.status_code == 200:
+            version = response.json()["version"]
+            return version
+        return ""
+    except:
+        return ""
+
 
 
 def passInfo():
-    proxy = checkProxy()
-    try:
-        info = getNewestVersionInfo(proxy)
-    except:
-        passInfo()
-
-    if info:
-        version = info
-    else:
-        print("[!] Error !!!")
-        sys.exit(0)
-
-    # version = "12-a"
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=studyLatest"
-    
     headers = {
         "Cookie": "JSESSIONID=551858919D81B6E40C56261D4F7ABA2E", 
         "Origin": "http://qndxx.youth54.cn", 
@@ -68,15 +58,25 @@ def passInfo():
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     
-    data = f"openid={config.openid}&version={version}"
-    try:
-        response = requests.post(url, data=data, headers=headers, verify=False, proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)},timeout=5)
+    proxy = checkProxy()
+    info = getNewestVersionInfo(proxy)
 
-        print(response.status_code,response.json())
-    
-        if response.status_code == 200 and response.json()["errcode"] == "0":
-            print("[*] Success ")
-    except:
+    if info:
+        version = info
+        # sys.exit(0)
+    # version = "12-a"
+        data = f"openid={config.openid}&version={version}"
+        try:
+            response = requests.post(url, data=data, headers=headers, verify=False, proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)},timeout=5)
+
+            print(response.status_code,response.json())
+        
+            if response.status_code == 200 and response.json()["errcode"] == "0":
+                print("[*] Success ")
+        except:
+            passInfo()
+    else:
+        print("[!] Error !!!")
         passInfo()
         
 if __name__ == "__main__":
