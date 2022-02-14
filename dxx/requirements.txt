@@ -1,6 +1,6 @@
 requests==2.26.0
 selenium==3.141.0
-Flask==1.1.2
+Flask==2.0.2
 Pillow==9.0.0
 rich==11.2.0
 aiocqhttp==1.4.2
