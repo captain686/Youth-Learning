@@ -6,6 +6,11 @@
 
 ------
 
+## 本地版本在分支：https://github.com/captain686/young-study/tree/localVersion
+> 本地版本需要自行配置`selenium`环境，以及更改机器人对应版本
+
+------
+
 🤖 使用`go-CQHttp`QQ机器人做推送
 
 > 机器人项目地址
