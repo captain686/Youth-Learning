@@ -2,12 +2,11 @@
 import requests
 import config
 import sys
-from check import checkProxy
 requests.packages.urllib3.disable_warnings()
 
 
 
-def getNewestVersionInfo(proxy):
+def getNewestVersionInfo():
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"
 
     headers = {
@@ -25,7 +24,7 @@ def getNewestVersionInfo(proxy):
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     try:
-        response = requests.get(url,headers=headers, verify=False,timeout=5,proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)})
+        response = requests.get(url,headers=headers, verify=False,timeout=5)
         print(f"getNewestVersionInfo Status {response.status_code}")
         if response.status_code == 200:
             version = response.json()["version"]
@@ -58,8 +57,7 @@ def passInfo():
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     
-    proxy = checkProxy()
-    info = getNewestVersionInfo(proxy)
+    info = getNewestVersionInfo()
 
     if info:
         version = info
@@ -67,7 +65,7 @@ def passInfo():
     # version = "12-a"
         data = f"openid={config.openid}&version={version}"
         try:
-            response = requests.post(url, data=data, headers=headers, verify=False, proxies={"http": "http://{}".format(proxy),"https": "https://{}".format(proxy)},timeout=5)
+            response = requests.post(url, data=data, headers=headers, verify=False,timeout=5)
 
             print(response.status_code,response.json())
         
