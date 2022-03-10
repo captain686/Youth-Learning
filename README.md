@@ -6,7 +6,7 @@
 
 ------
 
-## 本地版本在分支：https://github.com/captain686/young-study/tree/localVersion
+## 本地版本在分支：https://github.com/captain686/Youth-Learning/tree/localVersion
 > 本地版本需要自行配置`selenium`环境，以及更改机器人对应版本
 
 ------
