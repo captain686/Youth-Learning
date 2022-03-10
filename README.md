@@ -7,6 +7,8 @@
 ------
 
 > 本地版本需要自行配置`selenium`环境，以及更改机器人对应版本
+>
+> Windows快速配置`selenium`环境脚本: https://github.com/captain686/win_chromedriver
 
 ------
 
@@ -24,7 +26,7 @@
 
 ------
 ###                                                   使用
-> 以下操作基于linux  以下操作基于linux  以下操作基于linux
+> 以下操作基于`linux`  以下操作基于`linux`  以下操作基于`linux`
 > 
 > 向机器人QQ发送关键字即可获取截图
 > 
@@ -46,7 +48,7 @@
 >  > > 4. 开启抓包访问青年大学习
 >  > > 5. 筛选抓包历史中的`POST`请求可以找到`openid`
 >  >
->  > 😑 安卓系统可以使用HttpCanary进行抓包（可能需要root）
+>  > 😑 安卓系统可以使用`HttpCanary`进行抓包（可能需要root）
 >  > > 1. 在主界面点击加号选择微信
 >  > > 2. 开启抓包访问青年大学习
 >  > > 3. 在抓包历史中搜索youth54.cn，找到`POST`请求可以找到`openid`
