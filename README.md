@@ -9,6 +9,9 @@
 > 本地版本需要自行配置`selenium`环境，以及更改机器人对应版本
 >
 > Windows快速配置`selenium`环境脚本: https://github.com/captain686/win_chromedriver
+> windows运行listen.py
+> linux运行listen.py并导入crontab的定时任务
+>>命令cd dxx && crontab crontab,然后开启crontab服务，具体细节百度
 
 ------
 
