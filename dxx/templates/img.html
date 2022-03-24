@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>青年大学习</title>
+    <title>{{ title }}</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px
+        }
+
+        .img-box {
+            height: calc(100% - 18px);
+            overflow: hidden;
+        }
+
+        img {
+            top: 0;
+            right: 0;
+            height: calc(100% - 85px);
+            width: 100%;
+            position: fixed;
+        }
+
+        .footer {
+            background: #000;
+            width: 100%;
+            bottom: 0;
+            position: fixed;
+            height: 85px;
+        }
+
+        .btn_mes {
+            height: 100%;
+            left: 50%;
+            top: 50%;
+        }
+
+        .font {
+            word-spacing: 85px;
+            font-size: 200%;
+            color: white;
+            text-align: center;
+            font-family: Microsoft Yahei, serif;
+            line-height: 75px;
+            font-weight: lighter;
+        }
+    </style>
+
 </head>
+
 <body>
-    <img src={{img}}  style="display: inline-block; height: 100%; max-height: auto; width: 100%" >
+    <div class="img-box">
+        <img src={{ img }} alt="img">
+    </div>
+    <footer>
+        <div id="foot" class="footer">
+            <div class="btn_mes">
+                <p class="font">
+                    <i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>
