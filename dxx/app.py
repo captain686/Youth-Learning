@@ -4,15 +4,16 @@
 # from concurrent.futures import ThreadPoolExecutor
 # import threading
 import re
-from flask import Flask, url_for, render_template
+from flask import Flask, render_template
 from flask import jsonify
 import requests
-
+import config
 requests.packages.urllib3.disable_warnings()
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+template_fille = f"{config.template_fille}.html"
 img_dict = {'title': "青年大学习", 'img_url': None}
 
 headers = {
@@ -101,13 +102,13 @@ def img():
         img = img_url.replace(video_name, "images/end.jpg")
         # img = img_url+"/.."
         if requests.get(img, headers).status_code == 200:
-            return render_template("img.html", title=title, img=img)
+            return render_template(template_fille, title=title, img=img)
         else:
             id = 1
             while True:
                 status = fuzzPic(id)
                 if status:
-                    return render_template("img.html", title=title, img=status)
+                    return render_template(template_fille, title=title, img=status)
                 id += 1
     else:
         return jsonify(img_dict)

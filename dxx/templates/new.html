@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0px;
@@ -19,7 +20,7 @@
         img {
             top: 0;
             right: 0;
-            height: 100%;
+            height: calc(100% - 85px);
             width: 100%;
             position: fixed;
         }
@@ -55,7 +56,15 @@
     <div class="img-box">
         <img src={{ img }} alt="img">
     </div>
-
+    <footer>
+        <div id="foot" class="footer">
+            <div class="btn_mes">
+                <p class="font">
+                    <i class="fa fa-angle-left"></i> <i class="fa fa-angle-right"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
