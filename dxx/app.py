@@ -4,11 +4,14 @@
 # from concurrent.futures import ThreadPoolExecutor
 # import threading
 import re
+import threading
 from flask import Flask, render_template
 from flask import jsonify
 import requests
 import config
 requests.packages.urllib3.disable_warnings()
+
+from listen import bot
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -115,4 +118,7 @@ def img():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    web = threading.Thread(target=lambda: app.run(host="0.0.0.0",threaded = True))
+    qbot = threading.Thread(target=lambda: bot.run(host='127.0.0.1', port=8080))
+    web.start()
+    qbot.start()
