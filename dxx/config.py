@@ -1,5 +1,3 @@
-from re import template
-
 
 info = """Your info
 """
