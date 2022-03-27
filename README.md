@@ -22,7 +22,7 @@
 
 ### 使用
 
-> - **使用前请阅读[Notice](##Notice)**
+> - **使用前请阅读[Notice](#notice)**
 >
 > 以下操作基于`linux`  以下操作基于`linux`  以下操作基于`linux`
 >
