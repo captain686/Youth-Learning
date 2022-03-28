@@ -9,14 +9,15 @@ from flask import Flask, render_template
 from flask import jsonify
 import requests
 import config
-requests.packages.urllib3.disable_warnings()
-
 from listen import bot
+import asyncio
+
+requests.packages.urllib3.disable_warnings()
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-template_fille = f"{config.template_fille}.html"
+template_file = f"{config.template_fille}.html"
 img_dict = {'title': "青年大学习", 'img_url': None}
 
 headers = {
@@ -59,13 +60,14 @@ def fuzzPic(pic_id):
 # 获取期数标题
 def get_title(url):
     u = url.replace("index", "m")
-    html = requests.get(url=u, headers=headers, allow_redirects=False )
+    html = requests.get(url=u, headers=headers, allow_redirects=False)
     if html.status_code == 200:
         html.encoding = html.apparent_encoding
         title = re.findall("<title>(.*?)</title>", html.text)
         if title is not None:
             return title[0]
     return None
+
 
 # 返回图片链接
 @app.route('/')
@@ -105,20 +107,19 @@ def img():
         img = img_url.replace(video_name, "images/end.jpg")
         # img = img_url+"/.."
         if requests.get(img, headers).status_code == 200:
-            return render_template(template_fille, title=title, img=img)
+            return render_template(template_file, title=title, img=img)
         else:
             id = 1
             while True:
                 status = fuzzPic(id)
                 if status:
-                    return render_template(template_fille, title=title, img=status)
+                    return render_template(template_file, title=title, img=status)
                 id += 1
     else:
         return jsonify(img_dict)
 
 
 if __name__ == '__main__':
-    web = threading.Thread(target=lambda: app.run(host="0.0.0.0",threaded = True))
-    qbot = threading.Thread(target=lambda: bot.run(host='127.0.0.1', port=8080))
+    web = threading.Thread(target=lambda: app.run(host="0.0.0.0", threaded=True))
     web.start()
-    qbot.start()
+    bot.run_task(host='127.0.0.1', port=8080)
