@@ -10,7 +10,6 @@ from flask import jsonify
 import requests
 import config
 from listen import bot
-import asyncio
 
 requests.packages.urllib3.disable_warnings()
 
@@ -62,7 +61,7 @@ def get_title(url):
     u = url.replace("index", "m")
     html = requests.get(url=u, headers=headers, allow_redirects=False)
     if html.status_code == 200:
-        html.encoding = html.apparent_encoding
+        html.encoding = "utf-8"
         title = re.findall("<title>(.*?)</title>", html.text)
         if title is not None:
             return title[0]
