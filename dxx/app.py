@@ -121,4 +121,4 @@ def img():
 if __name__ == '__main__':
     web = threading.Thread(target=lambda: app.run(host="0.0.0.0", threaded=True))
     web.start()
-    bot.run_task(host='127.0.0.1', port=8080)
+    bot.run(host='127.0.0.1', port=8080)
