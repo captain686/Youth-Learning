@@ -1,5 +1,7 @@
 FROM captain686/chrome-selenium
 
+ENV LANG c.utf8
+
 COPY dxx/ home/dxx
 
 WORKDIR /home/dxx
