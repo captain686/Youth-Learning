@@ -3,19 +3,27 @@
 """
 # from concurrent.futures import ThreadPoolExecutor
 # import threading
-from flask import Flask, url_for, render_template
+import re
+import threading
+from flask import Flask, render_template
 from flask import jsonify
 import requests
-requests.packages.urllib3.disable_warnings()
+import config
+from listen import bot
+from finsh import finishRun
+import platform
 
+requests.packages.urllib3.disable_warnings()
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-img_dict = {'img_url': None}
+template_file = f"{config.template_fille}.html"
+img_dict = {'title': "青年大学习", 'img_url': None}
 
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 NetType/WIFI MicroMessenger/7.0.20.1781(0x6700143B) WindowsWechat(0x6303004c)',
-           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'}
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36 NetType/WIFI MicroMessenger/7.0.20.1781(0x6700143B) WindowsWechat(0x6303004c)',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'}
 
 
 # def find_url(start, end):
@@ -29,8 +37,8 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36
 # 获取最新一期视频链接
 def get_url():
     json_url = "https://h5.cyol.com/special/weixin/sign.json"
-    date = requests.get(json_url,headers).json()
-    for k, v in date.items():
+    date = requests.get(json_url, headers).json()
+    for _, v in date.items():
         raw = v
     url = raw.get("url")
     if url:
@@ -39,21 +47,37 @@ def get_url():
 
 
 # 特别期的图片名不确定，通过Fuzz获取图片
-def fuzzPic(id):
+def fuzzPic(pic_id):
     img_url = get_url()
     video_name = img_url.split('/')[-1]
     img = img_url.replace(video_name, "images/end/")
-    fin_url = f"{img}/{id}.jpg"
-    res = requests.get(fin_url,headers=headers)
+    fin_url = f"{img}/{pic_id}.jpg"
+    res = requests.get(fin_url, headers=headers)
     if res.status_code != 200:
-        return f"{img}/{id-1}.jpg"
+        return f"{img}/{pic_id - 1}.jpg"
     return ""
+
+
+# 获取期数标题
+def get_title(url):
+    u = url.replace("index", "m")
+    html = requests.get(url=u, headers=headers, allow_redirects=False)
+    if html.status_code == 200:
+        html.encoding = "utf-8"
+        title = re.findall("<title>(.*?)</title>", html.text)
+        if title is not None:
+            return title[0]
+    return None
+
 
 # 返回图片链接
 @app.route('/')
 def get_image():
     img_url = get_url()
     if img_url:
+        title = get_title(img_url)
+        if title is not None:
+            img_dict.update({'title': title})
         video_name = img_url.split('/')[-1]
         img = img_url.replace(video_name, "images/end.jpg")
         res = requests.get(img, headers)
@@ -77,22 +101,31 @@ def get_image():
 def img():
     img_url = get_url()
     if img_url:
+        title = get_title(img_url)
+        if title is None:
+            title = "青年大学习"
         video_name = img_url.split('/')[-1]
         img = img_url.replace(video_name, "images/end.jpg")
         # img = img_url+"/.."
         if requests.get(img, headers).status_code == 200:
-            return render_template("img.html", img=img)
+            return render_template(template_file, title=title, img=img)
         else:
             id = 1
             while True:
                 status = fuzzPic(id)
                 if status:
-                    return render_template("img.html", img=status)
-                id += 1      
+                    return render_template(template_file, title=title, img=status)
+                id += 1
     else:
         return jsonify(img_dict)
-        
-        
+
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
-    
+    if platform.system().lower() == 'windows':
+        finshtask = threading.Thread(target=finishRun)
+        finshtask.start()
+    web = threading.Thread(target=lambda: app.run(host="0.0.0.0", threaded=True))
+    print("web端已启动, 请访问5000端口")
+    web.start()
+    bot.run(host='127.0.0.1', port=8080)
+    print("请配置qbot目录下机器人，并启动")

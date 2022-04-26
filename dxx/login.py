@@ -15,18 +15,16 @@ from selenium import webdriver
 import config
 from rich.console import Console
 console = Console()
-from check import checkProxy
 
 
 class QnDxx(Pic):
     def __init__(self):
-        self.proxy = checkProxy()
         chrome_option = webdriver.ChromeOptions()
         # 防止打印一些无用的日志
         chrome_option.add_experimental_option("excludeSwitches", ['enable-automation', 'enable-logging'])
         chrome_option.add_argument('--headless')
         chrome_option.add_argument('--no-sandbox')
-        chrome_option.add_argument(f'--proxy-server={self.proxy}')
+        # chrome_option.add_argument(f'--proxy-server={self.proxy}')
         # chrome_option.add_argument('--disable-javascript')
         # chrome_option.add_argument('--headless')
         chrome_option.add_argument('user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x18001031) NetType/WIFI Language/zh_CN')
