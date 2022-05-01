@@ -56,7 +56,7 @@ class QnDxx(Pic):
             console.print("[-] Refresh ...", style="bold yellow", end='\r')
 
             now_url = self.driver.current_url
-            if "open.weixin.qq.com" in now_url:
+            if now_url.startswith("https://open.weixin.qq.com/"):
                 console.print("[!] openid注入失败", style="bold red")
             self.getXxjldetail()
             return True
