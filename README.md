@@ -26,6 +26,10 @@
 >
 > 以下操作基于`linux`  以下操作基于`linux`  以下操作基于`linux`
 >
+> > arm版本在分支[`arm64`](https://github.com/captain686/Youth-Learning/tree/arm64)
+> >
+> > - arm版本不支持云端暂时只支持本地，所以arm版本不需要代理池
+>
 > 向机器人QQ发送关键字即可获取截图
 >
 > 周一下午1点后会自动完成本次观看任务
