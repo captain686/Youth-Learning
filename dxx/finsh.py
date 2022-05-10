@@ -1,13 +1,12 @@
 # -*- coding: UTF-8 -*-
 import requests
 import config
-import sys
-from check import checkProxy
+
 
 requests.packages.urllib3.disable_warnings()
 
 
-def getNewestVersionInfo(proxy):
+def getNewestVersionInfo():
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=getNewestVersionInfo"
 
     headers = {
@@ -25,8 +24,7 @@ def getNewestVersionInfo(proxy):
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
     try:
-        response = requests.get(url, headers=headers, verify=False, timeout=5,
-                                proxies={"http": "http://{}".format(proxy), "https": "https://{}".format(proxy)})
+        response = requests.get(url, headers=headers, verify=False, timeout=5)
         print(f"getNewestVersionInfo Status {response.status_code}")
         if response.status_code == 200:
             version = response.json()
@@ -58,28 +56,24 @@ def passInfo():
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
 
-    proxy = checkProxy()
-    info = getNewestVersionInfo(proxy)
+    version = getNewestVersionInfo()
 
-    if info:
-        version = info
+    if version:
         # sys.exit(0)
         # version = "12-a"
         data = f"openid={config.openid}&version={version}"
         try:
             response = requests.post(url, data=data, headers=headers, verify=False,
-                                     proxies={"http": "http://{}".format(proxy), "https": "https://{}".format(proxy)},
                                      timeout=5)
 
             print(response.status_code, response.json())
 
             if response.status_code == 200 and response.json()["errcode"] == "0":
                 print("[*] Success ")
-        except:
-            passInfo()
+        except Exception as e:
+            print(e)
     else:
         print("[!] Error !!!")
-        passInfo()
 
 
 if __name__ == "__main__":
