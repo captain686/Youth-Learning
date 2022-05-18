@@ -2,7 +2,7 @@ FROM captain686/chrome-selenium:arm64
 
 ENV LANG c.utf8
 
-COPY dxx/ home/dxx
+COPY dxx/ /home/dxx
 
 WORKDIR /home/dxx
 
