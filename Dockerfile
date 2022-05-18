@@ -14,7 +14,7 @@ RUN chmod 777 start.sh \
 COPY dxx/tff/MI_LanTing_Regular.ttf /usr/share/fonts/chinese/
 
 RUN apt-get update \
-    &&apt-get install -y cron pip \
+    && apt-get install -y cron pip \
     && fc-cache /usr/share/fonts/chinese/ \
     && service cron start
 
