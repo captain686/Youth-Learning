@@ -150,9 +150,6 @@ cat cqhttp.log
 > 返回图片
 > ![](./doc/2022-3-25.PNG)
 
-## Notice
-
-由于各个地区采用的公众号不同无法确保每个地区都可使用（视频最后截图功能都可正常使用），具体可使用情况请自测，烦请将自测结果添加到此[**`issues #19`**](https://github.com/captain686/Youth-Learning/issues/19)中以便供他人查看
 
 ## Update
 
