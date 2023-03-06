@@ -2,11 +2,12 @@ version: '3.5'
 services:
   qndxx:
     build: .
+    container_name: Youth-Learning
     ports:
       - "6106:5000"
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - $PWD/dxx:/home/dxx
+      # - $PWD/dxx:/home/dxx
       - $PWD/img/:/home/dxx/img
       - $PWD/log/:/home/dxx/DxxLog
     tty: true
@@ -15,5 +16,5 @@ services:
 
 networks: 
   net: 
-    external: 
-      name: proxy_network
+    name: proxy_network
+    external: true
