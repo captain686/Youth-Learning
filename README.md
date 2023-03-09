@@ -2,7 +2,7 @@
 
 <div align=center><img src="https://socialify.git.ci/captain686/Youth-Learning/image?description=1&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&stargazers=1&cache=600&theme=Light" alt="Youth-Learning" width="640" height="320"  /></div>
 
-    ![](https://img.shields.io/badge/Tools-Docker-informational?style=plastic&logo=Docker&logoColor=white&color=2bbc8a)		![](https://img.shields.io/badge/OS-Linux-informational?style=plastic&logoColor=white&color=2bbc8a&logo=Linux)	![](https://img.shields.io/badge/Python->=3.7-informational?style=plastic&logo=Python&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Tools-Docker-informational?style=plastic&logo=Docker&logoColor=white&color=2bbc8a)		![](https://img.shields.io/badge/OS-Linux-informational?style=plastic&logoColor=white&color=2bbc8a&logo=Linux)	![](https://img.shields.io/badge/Python->=3.7-informational?style=plastic&logo=Python&logoColor=white&color=2bbc8a)
 
 ---
 
