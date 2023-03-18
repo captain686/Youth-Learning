@@ -1,4 +1,4 @@
-aiocqhttp==1.4.3
+https://github.com/nonebot/aiocqhttp/archive/refs/tags/v1.4.3.tar.gz
 Flask==2.2.3
 Pillow==9.4.0
 requests==2.27.1
