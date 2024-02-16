@@ -1,4 +1,4 @@
-# 青年大学习完成截图
+# 青年大学习自动化观看任务&截图
 
 <div align=center><img src="https://socialify.git.ci/captain686/Youth-Learning/image?description=1&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&stargazers=1&cache=600&theme=Light" alt="Youth-Learning" width="640" height="320"  /></div>
 
