@@ -11,7 +11,6 @@ def getNewestVersionInfo():
 
     headers = {
         "Origin": "http://qndxx.youth54.cn", 
-        "Cookie": "JSESSIONID=A0B36BB8AC5782093C96170306EECFD4", 
         "Accept": "*/*", 
         "X-Requested-With": "XMLHttpRequest", 
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x18001031) NetType/WIFI Language/zh_CN", 
@@ -38,7 +37,6 @@ def getNewestVersionInfo():
 def passInfo():
     url = "http://qndxx.youth54.cn/SmartLA/dxxjfgl.w?method=studyLatest"
     headers = {
-        "Cookie": "JSESSIONID=551858919D81B6E40C56261D4F7ABA2E", 
         "Origin": "http://qndxx.youth54.cn", 
         "Accept": "*/*", 
         "X-Requested-With": "XMLHttpRequest", 
