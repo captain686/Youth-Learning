@@ -1,6 +1,6 @@
 https://github.com/nonebot/aiocqhttp/archive/refs/tags/v1.4.3.tar.gz
 Flask==2.3.2
 Pillow==10.3.0
-requests==2.31.0
+requests==2.32.0
 rich==13.3.1
 selenium==4.8.1
